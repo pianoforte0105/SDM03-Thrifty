@@ -34,7 +34,7 @@ function App() {
   return (
     <VStack >
       <Box w="100%" bg={useColorModeValue('gray.100', 'gray.900')}minH="100vh">
-        <NavBar zIndex={100} isLoggedIn={isLoggedIn} currentUserInfo={currentUserInfo}/>
+        <NavBar zIndex={100} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} currentUserInfo={currentUserInfo}/>
         {/* <SimpleSidebar/> */}
         <Box w="100%" h="19vh"/>
         

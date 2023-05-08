@@ -8,11 +8,12 @@ import axios from "axios";
 
 export default function HomePage(){
     const [ifMapMode, setIfMapMode] = useState(true);
+    const navigate = useNavigate();
     const [storesData, setStoresData] = useState([]);
     const [storesDataforList, setStoresDataforList] = useState([]);
     const [userLocation, setUserLocation] = useState(null);
     const [mapCenter, setMapCenter] = useState(null);
-    const navigate = useNavigate();
+    
 
     useEffect(() => {
         navigator.geolocation.getCurrentPosition(
@@ -39,11 +40,7 @@ export default function HomePage(){
                 });
             }
         // console.log(storesData);
-    }, [mapCenter])
-
-    const changeNewCenter = (newCenter) => {
-        setMapCenter(newCenter);
-    };
+    }, [mapCenter]);
 
     console.log('mapCenter:', mapCenter)
 

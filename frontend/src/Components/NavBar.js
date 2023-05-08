@@ -6,13 +6,19 @@ import { Input } from "antd";
 import { useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
 
-export default function NavBar({isLoggedIn, currentUserInfo}) {
+export default function NavBar({isLoggedIn, setIsLoggedIn, currentUserInfo}) {
   const navigate = useNavigate();
   const { isOpen, onToggle } = useDisclosure();
   
-  useEffect(() => {
-    console.log(isLoggedIn);
-  }, []);
+  // useEffect(() => {
+  //   console.log(isLoggedIn);
+  // }, []);
+
+  const handleLogOut = () => {
+    localStorage.clear();
+    setIsLoggedIn(false);
+    navigate(`/`);
+  }
 
   return (
     <Box w="100%" bg={useColorModeValue('gray.100', 'gray.900')} px={4} position="fixed" id="navbar">
@@ -80,10 +86,10 @@ export default function NavBar({isLoggedIn, currentUserInfo}) {
             fontWeight={600}
             color={'white'}
             bg={'pink.400'}
-            href={'/'}
             _hover={{
               bg: 'pink.300',
-            }}>
+            }}
+            onClick={handleLogOut}>
             Log out
           </Button>
           </Stack>
